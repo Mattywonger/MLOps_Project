@@ -1,0 +1,10 @@
+artifact_location: /Users/matthewwong/MLOps_Project/mlruns/938850411266971545/models/m-388e9078f8a34af9a552ad0d6ef0f481/artifacts
+creation_timestamp: 1762851437244
+experiment_id: '938850411266971545'
+last_updated_timestamp: 1762851440106
+model_id: m-388e9078f8a34af9a552ad0d6ef0f481
+model_type: null
+name: RandomForest_model
+source_run_id: 4e15364344204e23a6b97434ff896f5f
+status: 2
+status_message: null

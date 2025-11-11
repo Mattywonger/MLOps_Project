@@ -1,0 +1,14 @@
+artifact_uri: /Users/matthewwong/MLOps_Project/mlruns/938850411266971545/4e15364344204e23a6b97434ff896f5f/artifacts
+end_time: 1762851440113
+entry_point_name: ''
+experiment_id: '938850411266971545'
+lifecycle_stage: active
+run_id: 4e15364344204e23a6b97434ff896f5f
+run_name: RandomForest_tuning
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762851422116
+status: 3
+tags: []
+user_id: matthewwong

@@ -1,0 +1,88 @@
+name: CI using CML
+
+# Trigger: This workflow runs on every push to the repository
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Train and Evaluate Model
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository code
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Python environment
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # Step 3: Set up CML (Continuous Machine Learning)
+      # CML provides tools to generate reports and visualizations
+      - name: Setup CML
+        uses: iterative/setup-cml@v2
+
+      # Step 4: Install project dependencies
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Step 5: Run the training and evaluation script
+      - name: Train Model and Generate Metrics
+        run: |
+          python train_and_evaluate.py
+
+      # Step 6: Create and publish CML report
+      # This creates a visual report that gets posted as a comment on GitHub
+      - name: Create CML Report
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Start the report
+          echo "# 🤖 Model Evaluation Results" >> report.md
+          echo "" >> report.md
+          echo "## 📊 Model Performance Comparison" >> report.md
+          echo "This report shows the performance of different models on the student dropout prediction task." >> report.md
+          echo "" >> report.md
+
+          # Add metrics table if it exists
+          if [ -f "metrics.txt" ]; then
+            echo "### Performance Metrics" >> report.md
+            cat metrics.txt >> report.md
+            echo "" >> report.md
+          fi
+
+          # Add visualization plots
+          echo "## 📈 Visualizations" >> report.md
+          echo "" >> report.md
+
+          if [ -f "plots/model_comparison.png" ]; then
+            echo "### Model Accuracy Comparison" >> report.md
+            cml publish plots/model_comparison.png --md >> report.md
+            echo "" >> report.md
+          fi
+
+          if [ -f "plots/confusion_matrix.png" ]; then
+            echo "### Confusion Matrix (Best Model)" >> report.md
+            cml publish plots/confusion_matrix.png --md >> report.md
+            echo "" >> report.md
+          fi
+
+          if [ -f "plots/feature_importance.png" ]; then
+            echo "### Feature Importance" >> report.md
+            cml publish plots/feature_importance.png --md >> report.md
+            echo "" >> report.md
+          fi
+
+          # Post the report as a comment
+          cml comment create report.md

@@ -1,0 +1,10 @@
+artifact_location: /Users/matthewwong/MLOps_Project/mlruns/938850411266971545/models/m-016ff6d6e6dd4a6a942b4e3e3e31b5d3/artifacts
+creation_timestamp: 1762851448161
+experiment_id: '938850411266971545'
+last_updated_timestamp: 1762851450491
+model_id: m-016ff6d6e6dd4a6a942b4e3e3e31b5d3
+model_type: null
+name: GradientBoosting_model
+source_run_id: 0f58190f5a274275b41d087f7f6b7b8e
+status: 2
+status_message: null

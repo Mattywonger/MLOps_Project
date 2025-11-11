@@ -1,0 +1,14 @@
+artifact_uri: /Users/matthewwong/MLOps_Project/mlruns/938850411266971545/0f58190f5a274275b41d087f7f6b7b8e/artifacts
+end_time: 1762851450494
+entry_point_name: ''
+experiment_id: '938850411266971545'
+lifecycle_stage: active
+run_id: 0f58190f5a274275b41d087f7f6b7b8e
+run_name: GradientBoosting_tuning
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762851440115
+status: 3
+tags: []
+user_id: matthewwong
