@@ -10,6 +10,12 @@ on:
     branches:
       - main
 
+# Grant permissions for the workflow to post comments and write to the repo
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
 jobs:
   build:
     name: Train and Evaluate Model
