@@ -10,7 +10,7 @@ import seaborn as sns
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.preprocessing import StandardScaler, OneHotEncoder, LabelEncoder
 from sklearn.compose import ColumnTransformer
-from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, AdaBoostClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import (
@@ -87,10 +87,11 @@ def train_models(X_train, y_train, X_test, y_test):
 
     # Define models
     models = {
-        'RandomForest': RandomForestClassifier(n_estimators=100, random_state=RANDOM_STATE, n_jobs=-1),
+        'RandomForest': RandomForestClassifier(n_estimators=150, max_depth=15, random_state=RANDOM_STATE, n_jobs=-1),
         'GradientBoosting': GradientBoostingClassifier(n_estimators=100, random_state=RANDOM_STATE),
         'LogisticRegression': LogisticRegression(max_iter=1000, random_state=RANDOM_STATE, n_jobs=-1),
-        'DecisionTree': DecisionTreeClassifier(max_depth=10, random_state=RANDOM_STATE)
+        'DecisionTree': DecisionTreeClassifier(max_depth=10, random_state=RANDOM_STATE),
+        'AdaBoost': AdaBoostClassifier(n_estimators=50, random_state=RANDOM_STATE)
     }
 
     results = {}
